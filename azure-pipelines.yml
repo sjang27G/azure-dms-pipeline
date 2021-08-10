@@ -2,6 +2,15 @@ trigger:
   branches:
     include:
     - master
+
+schedules:
+- cron: "0 5 * * *" # every day 5 am
+  displayName: DMS Daily update
+  branches:
+    include: 
+    - master
+  always: true
+
 parameters:
   - name: DMS_SERVICE_NAME  
     displayName: DMS Service Name
@@ -63,7 +72,7 @@ stages:
 
     steps:
     - task: AzureCLI@2
-      displayName: Azure CLI
+      displayName: Create DMS Service and Project
       inputs:
         azureSubscription: '${{ parameters.RESOURCE_MANAGER_CONNECTION }}'
         scriptType: bash
