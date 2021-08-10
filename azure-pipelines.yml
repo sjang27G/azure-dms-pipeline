@@ -21,17 +21,12 @@ stages:
       vmImage: 'ubuntu-latest'
 
     steps:
-    - bash: az --version
-      displayName: 'Show Azure CLI version'
-
-    - bash: echo ${AZURE_DEVOPS_CLI_PAT} | az login
-      env:
-        AZURE_DEVOPS_CLI_PAT: $(System.AccessToken)
-      displayName: 'Login Azure DevOps Extension'
-
-    - bash: az devops configure --defaults organization=$(System.TeamFoundationCollectionUri) project=$(System.TeamProject) --use-git-aliases true
-      displayName: 'Set default Azure DevOps organization and project'
-
-    - bash: |
-        az dms list 
-      displayName: 'Show build list and PRs'
+    - task: AzureCLI@2
+      displayName: Azure CLI
+      inputs:
+        azureSubscription: <Name of the Azure Resource Manager service connection>
+        scriptType: ps
+        scriptLocation: inlineScript
+        inlineScript: |
+          az --version
+          az account show
