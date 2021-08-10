@@ -1,7 +1,7 @@
 trigger:
   branches:
     include:
-    - main
+    - master
 
 stages:
 #############################################################
@@ -24,7 +24,7 @@ stages:
     - bash: az --version
       displayName: 'Show Azure CLI version'
 
-    - bash: echo ${AZURE_DEVOPS_CLI_PAT} | az devops login
+    - bash: echo ${AZURE_DEVOPS_CLI_PAT} | az login
       env:
         AZURE_DEVOPS_CLI_PAT: $(System.AccessToken)
       displayName: 'Login Azure DevOps Extension'
