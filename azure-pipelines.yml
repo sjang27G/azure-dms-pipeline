@@ -3,18 +3,14 @@ trigger:
     include:
     - master
 parameters:
-  - name: RESOURCE_GROUP
-    displayName: Azure Resource Group
-    type: string
-    default: 'rg-dev-benefits-group'  
-  - name: DMS_SERVICE_NAME
+  - name:   
     displayName: DMS Service Name
     type: string
-    default: 'lockton-dms'  
+    default: 'dms-benefits'  
   - name: DMS_PROJECT_NAME
     displayName: DMS Project Name
     type: string
-    default: 'dms-benefits-dev'  
+    default: 'dms-benefits'  
   - name: DMS_DATABASE_NAME
     displayName: DMS Database Name
     type: string
@@ -39,6 +35,8 @@ stages:
   - group: dms-benefits-dev
   - name: env
     value: dev
+  - name: resource-group
+    value: rg-$(env)-benefits-group
   - name: sku
     value: Standard_1vCores
   - name: vnet
@@ -72,5 +70,7 @@ stages:
         scriptLocation: inlineScript
         inlineScript: |
           az --version
-          az dms create -l centralus -n '${{ parameters.DMS_SERVICE_NAME }}-$(env)' --resource-group '${{ parameters.RESOURCE_GROUP }}' --sku-name '$(sku)' --subnet '$(full-vnet)'
+          az dms create -l centralus -n '$(service-name)' --resource-group '$(resource-group)' --sku-name '$(sku)' --subnet '$(full-vnet)'
+          az dms list --resource-group '$(resource-group)'
+          
            
