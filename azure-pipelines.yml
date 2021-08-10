@@ -39,6 +39,10 @@ stages:
     value: Standard_1vCores
   - name: vnet
     value: Dev-Infrastructure-SuperNets/subnets/lockton-dms-subnet
+  - name: serviceName
+    value: '${{ parameters.DMS_SERVICE_NAME }}-$(env)'
+  - name: projectName
+    value: '${{ parameters.DMS_PROJECT_NAME }}-$(env)'
   jobs:
   - job: JobDev
     displayName: 'Job Dev'
@@ -58,8 +62,8 @@ stages:
         scriptLocation: inlineScript
         inlineScript: |
           az --version
-          az dms create -l centralus --resource-group '${{ parameters.RESOURCE_GROUP }}' -n '${{ parameters.DMS_SERVICE_NAME }}-$(env)' --sku-name '$(sku)' --subnet '$(vnet)'
-          az dms project create --resource-group '${{ parameters.RESOURCE_GROUP }}' -service-name '${{ parameters.DMS_SERVICE_NAME }}-$(env)' -n '${{ parameters.DMS_PROJECT_NAME }}-$(env)'
+          az dms create -l centralus -n '${{ parameters.DMS_SERVICE_NAME }}-$(env)' --resource-group '${{ parameters.RESOURCE_GROUP }}' --sku-name '$(sku)' --subnet '$(vnet)'
+          az dms project create --resource-group '${{ parameters.RESOURCE_GROUP }}' -service-name '$(serviceName)' -n '$(projectName)'
           az dms list
-          az dms project list --resource-group '${{ parameters.RESOURCE_GROUP }}' --service-name '${{ parameters.DMS_SERVICE_NAME }}'
+          az dms project list --resource-group '${{ parameters.RESOURCE_GROUP }}' --service-name '$(serviceName)'
            
