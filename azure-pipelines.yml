@@ -23,6 +23,10 @@ parameters:
     displayName: Azure Resource Connection Name
     type: string
     default: 'Central Services Dev Infrastructure'
+  - name: SUBSCRIPTION_ID
+    displayName: Azure subscription id
+    type: string
+    default: '5a3d1593-4191-401c-be7e-1aeb91c4c6f6'
 
 stages:
 #############################################################
@@ -39,6 +43,8 @@ stages:
     value: Standard_1vCores
   - name: vnet
     value: Dev-Infrastructure-SuperNets/subnets/lockton-dms-subnet
+  - name: full-vnet
+    value: /subscriptions/${{ parameters.SUBSCRIPTION_ID }}/resourceGroups/${{ parameters.RESOURCE_GROUP }}/providers/Microsoft.Network/virtualNetworks/$(vnet)
   - name: serviceName
     value: '${{ parameters.DMS_SERVICE_NAME }}-$(env)'
   - name: projectName
@@ -62,5 +68,5 @@ stages:
         scriptLocation: inlineScript
         inlineScript: |
           az --version
-          az dms create -l centralus -n '${{ parameters.DMS_SERVICE_NAME }}-$(env)' --resource-group '${{ parameters.RESOURCE_GROUP }}' --sku-name '$(sku)' --subnet '$(vnet)'
+          az dms create -l centralus -n '${{ parameters.DMS_SERVICE_NAME }}-$(env)' --resource-group '${{ parameters.RESOURCE_GROUP }}' --sku-name '$(sku)' --subnet '$(full-vnet)'
            
