@@ -2,6 +2,11 @@ trigger:
   branches:
     include:
     - master
+parameters:
+  - name: RESOURCE_MANAGER_CONNECTION
+    displayName: Azure Resource Connection Name
+    type: string
+    default: 'Central Services Dev Infrastructure'
 
 stages:
 #############################################################
@@ -24,7 +29,7 @@ stages:
     - task: AzureCLI@2
       displayName: Azure CLI
       inputs:
-        azureSubscription: <Name of the Azure Resource Manager service connection>
+        azureSubscription: '${{ parameters.RESOURCE_MANAGER_CONNECTION }}'
         scriptType: ps
         scriptLocation: inlineScript
         inlineScript: |
