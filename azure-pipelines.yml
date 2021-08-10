@@ -1,0 +1,37 @@
+trigger:
+  branches:
+    include:
+    - main
+
+stages:
+#############################################################
+# Build the code
+# Currently this is not building and JAR files, but you would do that here
+# This is packaging up the files from Git to the Artifacts files
+#############################################################
+- stage: DEV
+  jobs:
+  - job: JobDev
+    displayName: 'Job Dev'
+    variables:
+      solution: '**/*.sln'
+      buildPlatform: 'Any CPU'
+      buildConfiguration: 'Release'
+    pool:
+      vmImage: 'ubuntu-latest'
+
+    steps:
+    - bash: az --version
+      displayName: 'Show Azure CLI version'
+
+    - bash: echo ${AZURE_DEVOPS_CLI_PAT} | az devops login
+      env:
+        AZURE_DEVOPS_CLI_PAT: $(System.AccessToken)
+      displayName: 'Login Azure DevOps Extension'
+
+    - bash: az devops configure --defaults organization=$(System.TeamFoundationCollectionUri) project=$(System.TeamProject) --use-git-aliases true
+      displayName: 'Set default Azure DevOps organization and project'
+
+    - bash: |
+        az dms list 
+      displayName: 'Show build list and PRs'
