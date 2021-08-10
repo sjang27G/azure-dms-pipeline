@@ -3,7 +3,7 @@
     "authentication": "SqlAuthentication",
     "dataSource": "rg-dev-benefits-gp-sqlsvr.database.windows.net",
     "encryptConnection": true,
-    "password": "S7m4S7cur3",
+    "password": null,
     "platform": null,
     "port": 0,
     "serverName": "rg-dev-benefits-gp-sqlsvr.database.windows.net",
