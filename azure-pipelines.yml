@@ -10,15 +10,15 @@ parameters:
   - name: DMS_SERVICE_NAME
     displayName: DMS Service Name
     type: string
-    default: 'lockton-dms-preprod'  
+    default: 'lockton-dms'  
   - name: DMS_PROJECT_NAME
     displayName: DMS Project Name
     type: string
-    default: 'vendorselect-dev'  
+    default: 'dms-benefits-dev'  
   - name: DMS_DATABASE_NAME
     displayName: DMS Database Name
     type: string
-    default: 'Utility'  
+    default: 'All'  
   - name: RESOURCE_MANAGER_CONNECTION
     displayName: Azure Resource Connection Name
     type: string
@@ -31,6 +31,14 @@ stages:
 # This is packaging up the files from Git to the Artifacts files
 #############################################################
 - stage: DEV
+  variables:
+  - group: dms-benefits-dev
+  - name: env
+    value: dev
+  - name: sku
+    value: Standard_1vCores
+  - name: vnet
+    value: Dev-Infrastructure-SuperNets/subnets/lockton-dms-subnet
   jobs:
   - job: JobDev
     displayName: 'Job Dev'
@@ -50,5 +58,8 @@ stages:
         scriptLocation: inlineScript
         inlineScript: |
           az --version
+          az dms create -l centralus --resource-group '${{ parameters.RESOURCE_GROUP }}' -n '${{ parameters.DMS_SERVICE_NAME }}-$(env)' --sku-name '$(sku)' --subnet '$(vnet)'
+          az dms project create --resource-group '${{ parameters.RESOURCE_GROUP }}' -service-name '${{ parameters.DMS_SERVICE_NAME }}-$(env)' -n '${{ parameters.DMS_PROJECT_NAME }}-$(env)'
           az dms list
           az dms project list --resource-group '${{ parameters.RESOURCE_GROUP }}' --service-name '${{ parameters.DMS_SERVICE_NAME }}'
+           
