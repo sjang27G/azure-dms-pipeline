@@ -63,7 +63,4 @@ stages:
         inlineScript: |
           az --version
           az dms create -l centralus -n '${{ parameters.DMS_SERVICE_NAME }}-$(env)' --resource-group '${{ parameters.RESOURCE_GROUP }}' --sku-name '$(sku)' --subnet '$(vnet)'
-          az dms project create --resource-group '${{ parameters.RESOURCE_GROUP }}' -service-name '$(serviceName)' -n '$(projectName)'
-          az dms list
-          az dms project list --resource-group '${{ parameters.RESOURCE_GROUP }}' --service-name '$(serviceName)'
            
