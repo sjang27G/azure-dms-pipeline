@@ -10,7 +10,7 @@ parameters:
   - name: DMS_PROJECT_NAME
     displayName: DMS Project Name
     type: string
-    default: 'dms-benefits-project'  
+    default: 'benefits-project'  
   - name: DMS_DATABASE_NAME
     displayName: DMS Database Name
     type: string
