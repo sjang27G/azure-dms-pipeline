@@ -51,4 +51,4 @@ stages:
         inlineScript: |
           az --version
           az dms list
-          az dms project list --resource-group '${{ parameters.RESOURCE_GROUP }}'' --service-name '${{ parameters.DMS_SERVICE_NAME }}'
+          az dms project list --resource-group '${{ parameters.RESOURCE_GROUP }}' --service-name '${{ parameters.DMS_SERVICE_NAME }}'
