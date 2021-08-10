@@ -43,10 +43,12 @@ stages:
     value: Standard_1vCores
   - name: vnet
     value: Dev-Infrastructure-SuperNets
+  - name: vnet-resource-group
+    value: RG-Dev-Infrastructure-VNet
   - name: subnet
     value: lockton-dms-subnet
   - name: full-vnet
-    value: /subscriptions/${{ parameters.SUBSCRIPTION_ID }}/resourceGroups/${{ parameters.RESOURCE_GROUP }}/providers/Microsoft.Network/virtualNetworks
+    value: /subscriptions/${{ parameters.SUBSCRIPTION_ID }}/resourceGroups/$(vnet-resource-group)/providers/Microsoft.Network/virtualNetworks/$(vnet)/subnets/$(subnet)
   - name: serviceName
     value: '${{ parameters.DMS_SERVICE_NAME }}-$(env)'
   - name: projectName
