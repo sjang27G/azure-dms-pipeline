@@ -1,0 +1,13 @@
+{
+    "additionalSettings": "",
+    "authentication": "SqlAuthentication",
+    "dataSource": "172.18.8.122",
+    "encryptConnection": true,
+    "password": "76sdlo#$",
+    "platform": null,
+    "port": 0,
+    "serverName": "172.18.8.122",
+    "trustServerCertificate": true,
+    "type": "SqlConnectionInfo",
+    "userName": "LocktonDMSUser"
+  }

@@ -1,0 +1,13 @@
+{
+    "additionalSettings": "",
+    "authentication": "SqlAuthentication",
+    "dataSource": "rg-dev-benefits-gp-sqlsvr.database.windows.net",
+    "encryptConnection": true,
+    "password": "S7m4S7cur3",
+    "platform": null,
+    "port": 0,
+    "serverName": "rg-dev-benefits-gp-sqlsvr.database.windows.net",
+    "trustServerCertificate": false,
+    "type": "SqlConnectionInfo",
+    "userName": "rg-dev-benefits-gp-sqlsvr-admin"
+  }

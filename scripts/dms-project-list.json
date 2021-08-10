@@ -1,0 +1,51 @@
+[
+  {
+    "creationTime": "2021-07-29T03:42:52.674873+00:00",
+    "databasesInfo": [
+      {
+        "sourceDatabaseName": "BenefitsData"
+      }
+    ],
+    "id": "/subscriptions/5a3d1593-4191-401c-be7e-1aeb91c4c6f6/resourceGroups/rg-dev-benefits-group/providers/Microsoft.DataMigration/services/lockton-dms-preprod/projects/vendorselect-dev",
+    "location": "centralus",
+    "name": "vendorselect-dev",
+    "provisioningState": "Succeeded",
+    "resourceGroup": "rg-dev-benefits-group",
+    "sourceConnectionInfo": {
+      "additionalSettings": "",
+      "authentication": "SqlAuthentication",
+      "dataSource": "172.18.8.122",
+      "encryptConnection": true,
+      "password": null,
+      "platform": null,
+      "port": 0,
+      "serverBrandVersion": "SQL Server 2016",
+      "serverName": "172.18.8.122",
+      "serverVersion": "13.0.4001.0",
+      "trustServerCertificate": true,
+      "type": "SqlConnectionInfo",
+      "userName": "LocktonDMSUser"
+    },
+    "sourcePlatform": "SQL",
+    "tags": {
+      "CostCenter": "12100-1100-8070-530350"
+    },
+    "targetConnectionInfo": {
+      "additionalSettings": "",
+      "authentication": "SqlAuthentication",
+      "dataSource": "rg-dev-benefits-gp-sqlsvr.database.windows.net",
+      "encryptConnection": true,
+      "password": null,
+      "platform": null,
+      "port": 0,
+      "serverBrandVersion": "Azure SQL Database",
+      "serverName": "rg-dev-benefits-gp-sqlsvr.database.windows.net",
+      "serverVersion": "12.0.2000.8",
+      "trustServerCertificate": false,
+      "type": "SqlConnectionInfo",
+      "userName": "rg-dev-benefits-gp-sqlsvr-admin"
+    },
+    "targetPlatform": "SQLDB",
+    "type": "Microsoft.DataMigration/services/projects"
+  }
+]

@@ -3,6 +3,22 @@ trigger:
     include:
     - master
 parameters:
+  - name: RESOURCE_GROUP
+    displayName: Azure Resource Group
+    type: string
+    default: 'rg-dev-benefits-group'  
+  - name: DMS_SERVICE_NAME
+    displayName: DMS Service Name
+    type: string
+    default: 'lockton-dms-preprod'  
+  - name: DMS_PROJECT_NAME
+    displayName: DMS Project Name
+    type: string
+    default: 'vendorselect-dev'  
+  - name: DMS_DATABASE_NAME
+    displayName: DMS Database Name
+    type: string
+    default: 'Utility'  
   - name: RESOURCE_MANAGER_CONNECTION
     displayName: Azure Resource Connection Name
     type: string
@@ -34,4 +50,5 @@ stages:
         scriptLocation: inlineScript
         inlineScript: |
           az --version
-          az account show
+          az dms list
+          az dms project list --resource-group '${{ parameters.RESOURCE_NAME }}'' --service-name '${{ parameters.DMS_SERVICE_NAME }}'

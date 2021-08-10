@@ -1,0 +1,25 @@
+[
+  {
+    "etag": null,
+    "id": "/subscriptions/5a3d1593-4191-401c-be7e-1aeb91c4c6f6/resourceGroups/rg-dev-benefits-group/providers/Microsoft.DataMigration/services/lockton-dms-preprod",
+    "kind": "Cloud",
+    "location": "centralus",
+    "name": "lockton-dms-preprod",
+    "provisioningState": "Succeeded",
+    "publicKey": null,
+    "resourceGroup": "rg-dev-benefits-group",
+    "sku": {
+      "capacity": null,
+      "family": null,
+      "name": "Standard_1vCores",
+      "size": "1 vCores",
+      "tier": "Standard"
+    },
+    "tags": {
+      "CostCenter": "12100-1100-8070-530350"
+    },
+    "type": "Microsoft.DataMigration/services",
+    "virtualNicId": "/subscriptions/5a3d1593-4191-401c-be7e-1aeb91c4c6f6/resourceGroups/rg-dev-benefits-group/providers/Microsoft.Network/networkInterfaces/NIC-eabyd63bxrz8vy6ywa8ymdc7",
+    "virtualSubnetId": "/subscriptions/5a3d1593-4191-401c-be7e-1aeb91c4c6f6/resourceGroups/RG-Dev-Infrastructure-VNet/providers/Microsoft.Network/virtualNetworks/Dev-Infrastructure-SuperNets/subnets/lockton-dms-subnet"
+  }
+]

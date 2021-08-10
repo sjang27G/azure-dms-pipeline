@@ -1,0 +1,86 @@
+az dms project task create --task-type OfflineMigration -n cli-utility-datamigration --project-name vendorselect-dev -g rg-dev-benefits-group --service-name lockton-dms-preprod \
+--database-options-json "/Users/sun/dms-dboptions.json" \
+--source-connection-json "/Users/sun/dms-source.json" \
+--target-connection-json "/Users/sun/dms-target.json" 
+
+--enable-data-integrity-validation --enable-query-analysis-validation --enable-schema-validation
+
+az dms project task create --task-type OfflineMigration -n cli-benefitsdata-datamigration-1 --project-name vendorselect-dev -g rg-dev-benefits-group --service-name lockton-dms-preprod \
+--database-options-json "/Users/sun/dms-benefitsdata-dboptions.json" \
+--source-connection-json "/Users/sun/dms-source.json" \
+--target-connection-json "/Users/sun/dms-target.json"
+
+
+az dms project task show --name cli-benefitsdata-datamigration-1 --project-name vendorselect-dev -g rg-dev-benefits-group --service-name lockton-dms-preprod
+
+
+az dms project task delete --project-name vendorselect-dev -g rg-dev-benefits-group --service-name lockton-dms-preprod -n cli-utility-datamigration 
+
+
+{
+    "etag": null,
+    "name": "cli-sandbox-utility-datamigration",
+    "properties": {
+      "clientData": null,
+      "commands": null,
+      "errors": null,
+      "input": {
+        "encryptedKeyForSecureFields": "bFihPD3ufYSIU+a0psNRlBoRft64LDQ8iLWpa42k5WixtPdNNwA73kc9t9/gv9zxLkvvUGNwfTxAvaQD1T1MB1HipvfHBDL5JT7kty2H5e3WEpJfcBnU0mgNbcmBj0kzdAxCuccyzE90ZYOL/lVUT+iYKCppwAYYCb5LWsXsXeq76g+JyclFAkhImmK336O1HY+Vi6XpYLGoev1EuD7LxcJOk3XuUldNyF/TtjVNItGFiTtncNOhECLKIjkDIDiOwGuqFFTvVNJAJfqQMA6Fer+8UE7VEmCSW5hD/YCnFtshtaMyiji3RWRnSYuPXtQbdkyuXcHEmta+4XbgpxhlMA==",
+        "selectedDatabases": [
+          {
+            "id": "",
+            "makeSourceDbReadOnly": false,
+            "name": "Utility",
+            "schemaSetting": null,
+            "tableMap": {
+              "FTP.FTPFileLog": "FTP.FTPFileLog",
+              "FTP.FTPFileSpec": "FTP.FTPFileSpec",
+              "UU.Application": "UU.Application",
+              "UU.ApplicationNotification": "UU.ApplicationNotification",
+              "UU.Notification": "UU.Notification",
+              "UU.Role": "UU.Role",
+              "UU.UserMapping": "UU.UserMapping",
+              "UU.UserMappingBrokerAttributes": "UU.UserMappingBrokerAttributes",
+              "UU.UserMappingViewedNotification": "UU.UserMappingViewedNotification",
+              "UU.UserRoleXref": "UU.UserRoleXref"
+            },
+            "targetDatabaseName": "sandbox-utility"
+          }
+        ],
+        "sourceConnectionInfo": {
+          "additionalSettings": "",
+          "authentication": "SqlAuthentication",
+          "dataSource": "172.18.8.122",
+          "encryptConnection": true,
+          "password": "TMrrUo/aAV7prHOZ8ZWeLJoTDqL3+1qgVqhh5tPaCeU=",
+          "platform": null,
+          "port": 0,
+          "serverName": "172.18.8.122",
+          "trustServerCertificate": true,
+          "type": "SqlConnectionInfo",
+          "userName": "LocktonDMSUser"
+        },
+        "targetConnectionInfo": {
+          "additionalSettings": "",
+          "authentication": "SqlAuthentication",
+          "dataSource": "rg-dev-benefits-gp-sqlsvr.database.windows.net",
+          "encryptConnection": true,
+          "password": "TMrrUo/aAV7prHOZ8ZWeLPoHErTlIUJRnfGguUtcXl8=",
+          "platform": null,
+          "port": 0,
+          "serverName": "rg-dev-benefits-gp-sqlsvr.database.windows.net",
+          "trustServerCertificate": false,
+          "type": "SqlConnectionInfo",
+          "userName": "rg-dev-benefits-gp-sqlsvr-admin"
+        },
+        "validationOptions": null
+      },
+      "isCloneable": true,
+      "output": null,
+      "state": "Succeeded",
+      "taskId": "67ffe77b-0956-4508-9cdc-14648984b7f2",
+      "taskType": "Migrate.SqlServer.SqlDb"
+    },
+    "resourceGroup": "rg-dev-benefits-group",
+    "type": "Microsoft.DataMigration/services/projects/tasks"
+  }

@@ -1,0 +1,20 @@
+[
+    {
+      "make_source_db_read_only": false,
+      "name": "Utility",
+      "schema_setting": null,
+      "table_map": {
+        "FTP.FTPFileLog": "FTP.FTPFileLog",
+        "FTP.FTPFileSpec": "FTP.FTPFileSpec",
+        "UU.Application": "UU.Application",
+        "UU.ApplicationNotification": "UU.ApplicationNotification",
+        "UU.Notification": "UU.Notification",
+        "UU.Role": "UU.Role",
+        "UU.UserMapping": "UU.UserMapping",
+        "UU.UserMappingBrokerAttributes": "UU.UserMappingBrokerAttributes",
+        "UU.UserMappingViewedNotification": "UU.UserMappingViewedNotification",
+        "UU.UserRoleXref": "UU.UserRoleXref"
+      },
+      "target_database_name": "sandbox-utility"
+    }
+  ]
