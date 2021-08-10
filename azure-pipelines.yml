@@ -72,6 +72,6 @@ stages:
           az --version
           az dms create -l centralus -n '$(service-name)' --resource-group '$(resource-group)' --sku-name '$(sku)' --subnet '$(full-vnet)'
           az dms list --resource-group '$(resource-group)'
-          az dms project create -l centralus --service-name '$(service-name)' --resource-group '$(resource-group)' --project-name '$(project-name)' --source-platform SQL --target-platform SQLDB
+          az dms project create -l centralus --service-name '$(service-name)' --resource-group '$(resource-group)' --name '$(project-name)' --source-platform SQL --target-platform SQLDB
           az dms project list --service-name '$(service-name)' --resource-group '$(resource-group)'
            
