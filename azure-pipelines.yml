@@ -3,13 +3,13 @@ trigger:
     include:
     - master
 
-schedules:
-- cron: "0 5 * * *" # every day 5 am
-  displayName: DMS Daily update
-  branches:
-    include: 
-    - master
-  always: true
+# schedules:
+# - cron: "0 5 * * *" # every day 5 am
+#   displayName: DMS Daily update
+#   branches:
+#     include: 
+#     - master
+#   always: true
 
 parameters:
   - name: DMS_SERVICE_NAME  
@@ -57,7 +57,7 @@ stages:
   - name: full-vnet
     value: /subscriptions/${{ parameters.SUBSCRIPTION_ID }}/resourceGroups/$(vnet-resource-group)/providers/Microsoft.Network/virtualNetworks/$(vnet)/subnets/$(subnet)
   - name: service-name
-    value: '${{ parameters.DMS_SERVICE_NAME }}-$(env)'
+    value: '${{ parameters.DMS_SERVICE_NAME }}-preprod'
   - name: project-name
     value: '${{ parameters.DMS_PROJECT_NAME }}-$(env)'
   jobs:
