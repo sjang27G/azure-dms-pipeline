@@ -30,7 +30,7 @@ stages:
       displayName: Azure CLI
       inputs:
         azureSubscription: '${{ parameters.RESOURCE_MANAGER_CONNECTION }}'
-        scriptType: ps
+        scriptType: bash
         scriptLocation: inlineScript
         inlineScript: |
           az --version
